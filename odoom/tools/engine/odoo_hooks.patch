@@ -1,0 +1,35 @@
+diff --git a/doomgeneric/d_main.c b/doomgeneric/d_main.c
+index 9012e5f..c68eba5 100644
+--- a/doomgeneric/d_main.c
++++ b/doomgeneric/d_main.c
+@@ -196,7 +196,8 @@ void D_Display (void)
+     }
+ 
+     // save the current screen if about to wipe
+-    if (gamestate != wipegamestate)
++    // odoom: the melt wipe busy-waits, which a browser main loop cannot.
++    if (0 && gamestate != wipegamestate)
+ 		{
+ 		wipe = true;
+ 		wipe_StartScreen(0, 0, SCREENWIDTH, SCREENHEIGHT);
+diff --git a/doomgeneric/p_inter.c b/doomgeneric/p_inter.c
+index 1eb58cf..1416612 100644
+--- a/doomgeneric/p_inter.c
++++ b/doomgeneric/p_inter.c
+@@ -38,6 +38,7 @@
+ #include "s_sound.h"
+ 
+ #include "p_inter.h"
++#include "odoo_hooks.h"
+ 
+ 
+ #define BONUSADD	6
+@@ -714,6 +715,8 @@ P_KillMobj
+ 	
+     }
+ 
++    Odoo_OnKill(source, target);
++
+     if (target->health < -target->info->spawnhealth 
+ 	&& target->info->xdeathstate)
+     {

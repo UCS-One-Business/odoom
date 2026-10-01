@@ -1,0 +1,5 @@
+// Above the spreadsheet's grid and overlays while the keyboard belongs to Doom.
+.o_doom_sheet_banner {
+    z-index: 1090; // above the grid, its popovers and the web client
+    pointer-events: none;
+}

@@ -1,0 +1,29 @@
+Third-party assets bundled with odoom
+=====================================
+
+Each keeps its upstream license, shipped next to it. The module as a whole
+is distributed under GPL-3 (see LICENSE).
+
+static/lib/doomgeneric/doomgeneric.js, doomgeneric.wasm
+    Built by tools/build_engine.sh from doomgeneric
+    (https://github.com/ozkl/doomgeneric), commit
+    dcb7a8dbc7a16ce3dda29382ac9aae9d77d21284, which derives from Chocolate
+    Doom and the id Software Doom source release.
+    License: GNU General Public License, version 2 or (at your option) any
+    later version, as stated in the compiled source files. See
+    doomgeneric/COPYING.
+    doomgeneric's own doomgeneric.c and dummy.c, which state no "or later",
+    are not compiled; tools/engine/doomgeneric_odoo.c (GPL-2.0-or-later)
+    replaces them. A few doomgeneric headers without a notice are included
+    for their declarations only.
+    Our changes: tools/engine/doomgeneric_odoo.c, tools/engine/odoo_hooks.h
+    and tools/engine/odoo_hooks.patch. Corresponding source: tools/ plus the
+    upstream commit above.
+
+    doomgeneric.js also contains the Emscripten runtime
+    (https://emscripten.org), MIT license, Copyright (c) 2010-2014
+    Emscripten authors.
+
+static/lib/freedoom/freedoom1.wad
+    Freedoom: Phase 1, version 0.13.0 (https://freedoom.github.io/).
+    License: BSD-style Freedoom license. See freedoom/COPYING.txt.
