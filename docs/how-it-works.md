@@ -76,30 +76,11 @@ colour string per cell, `"#8b0001"`, and three things make that fast:
    screen as a plain rectangle in the colour it holds. It skips conditional
    formats, borders, icons and text layout.
 
-### The smear
-
-The first colour version looked wrong in motion: the picture smeared, as if
-every frame bled into the next. The cause was a nice feature of the grid: when
-a cell's colour changes, it fades to the new colour over 200 ms. With a new
-frame every 30 to 50 ms, every cell was always mid-fade. The renderer patch
-turns that animation off for DOOM cells only.
-
-### Numbers
-
-Measured in headless Chromium without a GPU, 1600 × 900 window. The number of
-cells sets the frame rate; their size barely matters.
-
-| Screen | Cells | fps |
-|---|---|---|
-| `=DOOM(80, 50)` | 4,000 | ~31 |
-| `=DOOM(120, 75)` (the default) | 9,000 | ~20 |
-| `=DOOM(160, 100)` | 16,000 | ~15 |
-| `=DOOM(320, 200)`, Doom's own resolution | 64,000 | ~5 |
-
-What remains is the spreadsheet's own evaluation of the spilled values. A
-first run of this table was wrong: the larger screens did not fit on the
-sheet, so they drew nothing and looked fast. The sheet is now sized to the
-screen before measuring.
+   It also fixes a smear. The first colour version looked wrong in motion, as
+   if every frame bled into the next. The cause was a nice feature of the
+   grid: when a cell's colour changes, it fades to the new colour over 200 ms.
+   With a new frame every 30 to 50 ms, every cell was always mid-fade. The
+   patch turns that fade off for DOOM cells only.
 
 ## Keyboard and focus
 
@@ -161,3 +142,30 @@ project is not affiliated with or endorsed by them.
 No sound, no mouse, saves last only as long as the page, and the renderer
 patch depends on o-spreadsheet internals, so an Odoo update can break it. It
 is a fun experiment, not a product.
+
+## How it was built
+
+oDoom was built with an AI coding assistant, from a few short prompts (lightly
+edited):
+
+> Do it the easy way and give me Doom here as a custom module. Nothing else
+> installed, just Doom, kind of.
+
+> I want us to do something crazy: make Doom run inside an Odoo spreadsheet.
+
+> Great, but make it more performant and multi-colour.
+
+> Runs great. Could it take more space instead of a quarter of the screen?
+
+In between came a long specification for a bigger internal module, with Doom
+woven into sessions, chatter and dashboards. It is not what mattered. What
+did matter is a rule every session in our module repository starts with, so
+no prompt had to ask for testing:
+
+> Module work is reported done only after `make verify` passes fresh against
+> the final tree; quote its summary in the report. Lint or test runs made
+> while iterating are progress, not the gate.
+
+`make verify` lints the module, installs it on a clean database and runs its
+Python tests, its JavaScript tests and a browser tour that checks the cells
+actually show Doom.
