@@ -1,6 +1,6 @@
 {
     "name": "oDoom",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "summary": "Play Doom inside an Odoo spreadsheet: =DOOM() turns cells into pixels",
     "category": "Productivity/Documents",
     "author": "UCS OneDo AB",

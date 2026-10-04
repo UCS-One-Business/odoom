@@ -11,7 +11,9 @@
 set -euo pipefail
 
 EMSDK_IMAGE="emscripten/emsdk:6.0.10@sha256:e077d54e2b8970575ebc4f185ac1de0b95c05f2b266134d4ba27449af7aebf65"
-DOOMGENERIC_URL="https://github.com/ozkl/doomgeneric.git"
+# Our fork of ozkl/doomgeneric, kept so the engine's source stays available
+# (GPL); the commit is tagged odoom-engine there.
+DOOMGENERIC_URL="https://github.com/UCS-One-Business/doomgeneric.git"
 DOOMGENERIC_COMMIT="dcb7a8dbc7a16ce3dda29382ac9aae9d77d21284"
 FREEDOOM_VERSION="0.13.0"
 FREEDOOM_SHA256="3f9b264f3e3ce503b4fb7f6bdcb1f419d93c7b546f4df3e874dd878db9688f59"

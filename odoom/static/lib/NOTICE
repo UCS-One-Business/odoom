@@ -18,7 +18,8 @@ static/lib/doomgeneric/doomgeneric.js, doomgeneric.wasm
     for their declarations only.
     Our changes: tools/engine/doomgeneric_odoo.c, tools/engine/odoo_hooks.h
     and tools/engine/odoo_hooks.patch. Corresponding source: tools/ plus the
-    upstream commit above.
+    upstream commit above, kept in our fork
+    https://github.com/UCS-One-Business/doomgeneric (tag odoom-engine).
 
     doomgeneric.js also contains the Emscripten runtime
     (https://emscripten.org), MIT license, Copyright (c) 2010-2014

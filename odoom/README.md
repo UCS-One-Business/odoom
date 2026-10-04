@@ -58,6 +58,9 @@ GPL-3 (`LICENSE`). The engine is doomgeneric (GPL-2.0-or-later) with our
 changes in `tools/engine/`; Freedoom is under its own BSD-style license. See
 `static/lib/NOTICE`. id Software's DOOM.WAD is not included.
 
+Doom is a trademark of id Software. oDoom is not affiliated with or endorsed
+by id Software.
+
 ## Limitations
 
 - No sound, no mouse. Keyboard only.
